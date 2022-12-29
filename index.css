@@ -1,0 +1,114 @@
+/*corpo*/
+*{margin: 0;padding: 0;box-sizing: border-box; overflow: hidden;}
+body{
+	background: linear-gradient(to right, #835454, #4476ab);
+	height: 100vh;width: 100vw;	
+}
+/*corpo-fim*/
+/*celulas/espaço*/
+.suport{
+	display: grid;
+	width: 100vw;
+	height: 100vh;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+	grid-template-columns: repeat(3,auto) ;
+	filter:drop-shadow(2px 4px 6px black);
+}
+
+/*Colocações e "queries" das jogadas */
+.suport.x .cel:not(.x):not(.circle):hover::after,
+.suport.x .cel:not(.x):not(.circle):hover::before,
+.suport.circle .cel:not(.x):not(.circle):hover::after,
+.suport.x .cel:not(.x):not(.circle):hover::before{
+	opacity: 50% !important;z-index: 100;
+
+}
+
+.cel{
+	width: 100px;height: 100px;
+	border: 0.1px solid ghostwhite;
+	display: flex;justify-content: center;
+	align-items: center;
+	position: relative;
+	
+}
+.cel.x, 
+.cel.circle {
+	cursor: not-allowed;
+}
+/*Colocações e "queries" das jogadas */
+
+.cel:nth-child(1),.cel:nth-child(2),.cel:nth-child(3){
+	border-top: none;
+}
+.cel:nth-child(1),.cel:nth-child(4),.cel:nth-child(7){
+	border-left: none;
+}
+.cel:nth-child(7),.cel:nth-child(8),.cel:nth-child(9){
+	border-bottom: none;
+}
+.cel:nth-child(3),.cel:nth-child(6),.cel:nth-child(9){
+	border-right: none;
+}
+/*celulas/espaço-fim*/
+
+/*DD X*/
+
+.cel.x::before,
+.cel.x::after, 
+.suport.x .cel:not(.x):not(.circle):hover::after,
+.suport.x .cel:not(.x):not(.circle):hover::before{
+	content: "";
+	height:calc(100px * 15/100);
+	width: calc(100px * 90/100);
+	background: darkslategrey;
+	position: absolute;
+}
+.cel.x::before,
+.suport.x .cel:not(.x):not(.circle):hover::before{
+	transform: rotate(45deg);}
+
+.cel.x::after,
+.suport.x .cel:not(.x):not(.circle):hover::after{
+	transform: rotate(-45deg);}
+/*DD X-fim*/
+
+/*DD O*/
+.cel.circle::before,
+.cel.circle::after, 
+.suport.circle .cel:not(.x):not(.circle):hover::after,
+.suport.circle .cel:not(.x):not(.circle):hover::after {
+	content: "";
+	height:calc(90px * 9/10); width:calc(90px * 90/100) ;
+	background: darkslategrey;
+	position: absolute;
+	border: 1px solid darkslategrey;
+	border-radius: 100%;
+}
+/*DD X-fim*/
+/*Vitória*/
+.winM{
+	background-color: black;
+	opacity: 50%;color: white;
+	border: none;
+	width: 100vw;height: 100vh;
+	
+	top: 0;bottom: 0;left: 0;right: 0;
+	justify-content: center;align-items: center;
+	flex-direction: column;
+}
+.winM > button{
+	font-size: 1.5vw;color: #4500b3;width: 15vw;padding: 0.5vw;
+	border-radius:5px 5px 10px 10px ;cursor: pointer;
+}
+.winM > button:hover{
+	background-color: #4500b3;color:white;
+}
+p {
+	color: rgb(255, 255, 255);opacity: 100%;
+	font-size: 1.5vw;
+}
+/*Vitória*/
